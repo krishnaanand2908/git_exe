@@ -34,12 +34,18 @@ def guess_game_v5(n):
     
     
     while (guess<=9):
-        inputnum = input(fontstyle.apply("Enter the number:\n", "Purple/bold"))
-        try:
-            guessed_number = int(inputnum)
-        except:
-            pass
-        if guessed_number == num:
+        guessed_number= (input(fontstyle.apply("Enter the number:\n", "Purple/bold")))
+  
+  
+        if guessed_number == '-29001':
+            print(fontstyle.apply(f"Turns remaining: {9-guess}", 'white/bold'))
+            print(fontstyle.apply(f'The number you have to guess is {num}', 'purple/bold/underline'))
+            
+        elif guessed_number == '-29002':
+            print(fontstyle.apply(f"Turns remaining: {9-guess}", 'white/bold'))
+            guess -= 2
+  
+        elif int(guessed_number) == num:
             congo = fontstyle.apply("Congratulations!\nYou have guessed the number!", "yellow/green/underline/italic")
             print(congo)
             speak("Congratulations!!!... You have guessed the number!!!...")
@@ -52,15 +58,11 @@ def guess_game_v5(n):
             guess = guess + 1
             break
         
-        elif inputnum == 'cheatNUM':
-            print(fontstyle.apply(f"Turns remaining: {9-guess}", 'white/bold'))
-            print(fontstyle.apply(f'The number you have to guess is {num}'))
-          
-        elif inputnum == 'cheatTURN':
-            print(fontstyle.apply(f"Turns remaining: {9-guess}", 'white/bold'))
-            guess -= 2
         
-        elif guessed_number < num:
+          
+        
+        
+        elif int(guessed_number) < num:
             print(fontstyle.apply(f"Turns remaining: {9-guess}", "white/bold"))
             
             smaller = fontstyle.apply("The number you have entered is smaller than the number to be guessed!", "bold/italic/blue")
@@ -69,7 +71,7 @@ def guess_game_v5(n):
             guess = guess + 1
             continue
         
-        elif guessed_number > num:
+        elif int(guessed_number) > num:
             print(fontstyle.apply(f"Turns remaining: {9-guess}", 'white/bold'))
             
             greater = fontstyle.apply("The number you have entered is greater than the number to be guessed!", "bold/italic/red")
